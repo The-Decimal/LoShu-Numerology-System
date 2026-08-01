@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo Shu Grid | Numerology Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>Lo Shu Grid Numerology</h1>
+        <p class="subtitle">Enter your Date of Birth to calculate your King, Queen, and elemental grid.</p>
+
+        <!-- NEW: Standard Reference Grid -->
+        <div class="reference-section">
+            <span class="reference-title">Standard Lo Shu Blueprint</span>
+            <div class="reference-grid">
+                <div class="ref-cell">4</div><div class="ref-cell">9</div><div class="ref-cell">2</div>
+                <div class="ref-cell">3</div><div class="ref-cell">5</div><div class="ref-cell">7</div>
+                <div class="ref-cell">8</div><div class="ref-cell">1</div><div class="ref-cell">6</div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label for="dob">Select Date of Birth</label>
+            <input type="date" id="dob" required />
+            <button class="btn" id="calculateBtn">Generate Grid</button>
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            
+            <div class="summary-cards">
+                <div class="card">
+                    <span class="card-title">King Number (Driver)</span>
+                    <span class="card-value" id="kingOutput">-</span>
+                </div>
+                <div class="card">
+                    <span class="card-title">Queen Number (Destiny)</span>
+                    <span class="card-value" id="queenOutput">-</span>
+                </div>
+            </div>
+
+            <div class="pool-section">
+                <span style="color: var(--text-secondary); font-size: 13px;">Final Digit Pool (Excluding Zeros):</span>
+                <div id="poolOutput" style="font-weight: 600; letter-spacing: 2px; margin-top: 5px;">-</div>
+            </div>
+
+            <div class="lo-shu-grid">
+                <div class="grid-cell" id="cell-4">-</div>
+                <div class="grid-cell" id="cell-9">-</div>
+                <div class="grid-cell" id="cell-2">-</div>
+                
+                <div class="grid-cell" id="cell-3">-</div>
+                <div class="grid-cell" id="cell-5">-</div>
+                <div class="grid-cell" id="cell-7">-</div>
+                
+                <div class="grid-cell" id="cell-8">-</div>
+                <div class="grid-cell" id="cell-1">-</div>
+                <div class="grid-cell" id="cell-6">-</div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <!-- UPDATED: College name removed -->
+            <p class="developer-credit">Developed by: <a href="#">Aditya Tiwari</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
