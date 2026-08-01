@@ -27,10 +27,29 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     const fullDateString = day + month + year;
     const queenNumber = reduceToSingleDigit(fullDateString);
 
-    let numberPool = fullDateString.split('');
-    numberPool.push(kingNumber.toString());
-    numberPool.push(queenNumber.toString());
+    // Professor's Feedback Fix:
+    // For days 1 to 9, 10, 20, and 30, the day digits evaluate directly to the king number 
+    // or don't need separate splitting because they are single digits/handled standardly.
+    // We check if the day is an exception rule where we do not add the date digits explicitly 
+    // on top of the king number if they are already handled.
+    const dayInt = parseInt(day, 10);
+    const isExceptionDay = (dayInt >= 1 && dayInt <= 9) || dayInt === 10 || dayInt === 20 || dayInt === 30;
 
+    let numberPool = [];
+
+    if (isExceptionDay) {
+        // For exception days, use month + year digits, and add the king & queen numbers
+        numberPool = (month + year).split('');
+        numberPool.push(kingNumber.toString());
+        numberPool.push(queenNumber.toString());
+    } else {
+        // Standard behavior for other days (11-19, 21-29, 31)
+        numberPool = fullDateString.split('');
+        numberPool.push(kingNumber.toString());
+        numberPool.push(queenNumber.toString());
+    }
+
+    // Filter out zeros from the final pool
     numberPool = numberPool.filter(digit => digit !== '0');
 
     const gridCounts = {
@@ -53,7 +72,6 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
         const count = gridCounts[i.toString()];
         
         if (count > 0) {
-            // UPDATED: Create an array of the repeated number and join with commas
             const repeatedValues = Array(count).fill(i).join(', ');
             cell.innerText = repeatedValues;
             cell.style.color = "var(--accent-gold)"; 
